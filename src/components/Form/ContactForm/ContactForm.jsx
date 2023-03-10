@@ -7,7 +7,6 @@ import { addContactsWarning } from 'components/Toastify/Toastify';
 import { Form, Title, TextFieldStyled, Button, IconBtn } from './ContactForm.styled';
 
 export const ContactForm = () => {
-  const state = useSelector(state => state);
   const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
 
@@ -25,8 +24,6 @@ export const ContactForm = () => {
     } else {
       addContactsWarning(name);
     }
-    console.log(state);
-    console.log(contacts);
   };
 
   return (
