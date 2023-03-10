@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { BsTelephone } from 'react-icons/bs';
 import { useDispatch } from 'react-redux';
 
-import { deleteContacts } from 'redux/operations';
+import { deleteContacts } from 'redux/contacts/contacts-operations';
 
 import { Items, Link, Button } from './ContactListItem.styled';
 

@@ -1,29 +1,26 @@
 import styled from 'styled-components';
-import { BsTelephonePlus } from 'react-icons/bs';
+import { TextField } from '@mui/material';
+import { FaHouseUser } from 'react-icons/fa';
 
 export const Form = styled.form`
-  margin-right: auto;
-  margin-left: auto;
-  margin-bottom: 25px;
-  max-width: 250px;
-
-  @media screen and (min-width: 426px) {
-    max-width: 330px;
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
 `;
 
-export const Label = styled.label`
-  display: block;
-  margin-bottom: 6px;
-  font-weight: bold;
+export const Icon = styled(FaHouseUser)`
+  width: 85px;
+  height: 85px;
+
   color: #002359c4;
 `;
 
-export const Input = styled.input`
-  display: block;
-  margin-bottom: 10px;
-  padding: 5px;
-  width: 100%;
+export const Title = styled.h2`
+  color: rgb(0 35 89 / 77%);
+`;
+
+export const TextFieldStyled = styled(TextField)`
   border: 1px solid #487996;
   border-radius: 5px;
   background-color: #ebf4f8;
@@ -39,13 +36,7 @@ export const Input = styled.input`
 `;
 
 export const Button = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: auto;
-  margin-right: auto;
-
-  width: 180px;
+  width: 100%;
   padding: 10px;
   text-align: center;
   font-weight: bold;
@@ -63,8 +54,4 @@ export const Button = styled.button`
     color: #ebf4f8;
     background-color: #002359c4;
   }
-`;
-
-export const IconBtn = styled(BsTelephonePlus)`
-  margin-left: 10px;
 `;
