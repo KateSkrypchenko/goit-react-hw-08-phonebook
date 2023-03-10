@@ -8,7 +8,7 @@ import { UserMenu } from './UserMenu/UserMenu';
 
 export const Menu = () => {
   const isLogin = useSelector(selectIsLoggedIn);
-  console.log(isLogin);
+
   return (
     <Header>
       <Nav>

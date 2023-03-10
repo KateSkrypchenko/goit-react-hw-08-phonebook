@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { selectContacts } from 'redux/contacts/contacts-selectors';
 import { addContacts } from 'redux/contacts/contacts-operations';
+import { addContactsWarning } from 'components/Toastify/Toastify';
 
 import { Form, Title, TextFieldStyled, Button, IconBtn } from './ContactForm.styled';
 
@@ -22,7 +23,7 @@ export const ContactForm = () => {
       dispatch(addContacts({ name, number }));
       event.target.reset();
     } else {
-      alert(`${name} is already in contacts`);
+      addContactsWarning(name);
     }
     console.log(state);
     console.log(contacts);

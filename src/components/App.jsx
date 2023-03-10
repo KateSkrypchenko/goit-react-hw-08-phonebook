@@ -8,6 +8,7 @@ import { UserRoutes } from './UserRoutes';
 
 import { GlobalStyle } from './GlobalStyles';
 import { Wrapper } from './App.styled';
+import { Toastify } from './Toastify/Toastify';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -21,6 +22,7 @@ export const App = () => {
       <GlobalStyle />
       <Menu />
       <UserRoutes />
+      <Toastify />
     </Wrapper>
   );
 };

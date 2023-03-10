@@ -10,7 +10,6 @@ import { Container, LinkNav, Wrapper, Button } from './UserMenu.styled';
 export const UserMenu = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
-  console.log(user);
 
   const onLogout = () => {
     dispatch(logout());

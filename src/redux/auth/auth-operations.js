@@ -51,8 +51,6 @@ export const current = createAsyncThunk('auth/current', async (_, thunkAPI) => {
   try {
     setToken(persistedToken);
     const response = await instance.get('/users/current');
-    console.log(state);
-    console.log(response.data);
     return response.data;
   } catch (error) {
     setToken();
