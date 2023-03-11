@@ -2,17 +2,21 @@ import { useDispatch } from 'react-redux';
 
 import { login } from 'redux/auth/auth-operations';
 
+import { loginError } from 'components/Toastify/Toastify';
+
 import { Form, Icon, Title, TextFieldStyled, Button } from './LoginForm.styled';
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
 
-  const handleSubmit = event => {
+  const handleSubmit = async event => {
     event.preventDefault();
     const email = event.target.elements.email.value;
     const password = event.target.elements.password.value;
-    dispatch(login({ email, password }));
-    event.target.reset();
+    const result = await dispatch(login({ email, password }));
+    if (result.error) {
+      loginError();
+    }
   };
 
   return (
