@@ -1,12 +1,14 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { redactContacts } from 'redux/contacts/contacts-operations';
+import { selectContacts } from 'redux/contacts/contacts-selectors';
 
 import {
   redactContactsWarning,
   redactContactsSuccess,
+  redactContactsError,
   serverError,
 } from 'components/Toastify/Toastify';
 
@@ -25,24 +27,29 @@ import { Modal } from '@mui/material';
 export const RedactModal = ({ isOpenModal, handleCloseModal, id, name, number }) => {
   const dispatch = useDispatch();
 
+  const contacts = useSelector(selectContacts);
   const [redactName, setRedactName] = useState(name);
   const [redactNumber, setRedactNumber] = useState(number);
 
-  const handleSubmit = event => {
+  const handleSubmit = async event => {
     event.preventDefault();
     const nameForm = event.target.elements.name.value;
     const numberForm = event.target.elements.number.value;
+    const isIncludesName = contacts.some(
+      contact => contact.name.toLowerCase() === nameForm.toLowerCase()
+    );
     if (name === nameForm && number === numberForm) {
       redactContactsWarning();
+    } else if (isIncludesName) {
+      redactContactsError(nameForm);
     } else {
-      dispatch(redactContacts({ id, name: nameForm, number: numberForm }))
-        .then(() => {
-          handleCloseModal();
-          redactContactsSuccess();
-        })
-        .catch(() => {
-          serverError();
-        });
+      const result = await dispatch(redactContacts({ id, name: nameForm, number: numberForm }));
+      if (result.error) {
+        serverError();
+      } else {
+        handleCloseModal();
+        redactContactsSuccess();
+      }
     }
   };
 

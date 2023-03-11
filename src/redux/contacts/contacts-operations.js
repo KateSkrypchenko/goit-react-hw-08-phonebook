@@ -40,7 +40,6 @@ export const redactContacts = createAsyncThunk(
   async ({ id, ...values }, thunkAPI) => {
     try {
       const response = await instance.patch(`/contacts/${id}`, values);
-      console.log(response.data);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
