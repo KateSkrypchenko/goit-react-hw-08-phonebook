@@ -7,6 +7,8 @@ import { BsFillPencilFill } from 'react-icons/bs';
 import { RedactModal } from '../EditModal/RedactModal';
 import { deleteContacts } from 'redux/contacts/contacts-operations';
 
+import { serverError, deleteContactsSuccess } from 'components/Toastify/Toastify';
+
 import { Items, Link, ButtonRedact, ButtonDelete } from './ContactListItem.styled';
 
 export const ContactListItem = ({ id, name, number }) => {
@@ -15,7 +17,14 @@ export const ContactListItem = ({ id, name, number }) => {
 
   const handleOpenModal = () => setIsOpenModal(true);
   const handleCloseModal = () => setIsOpenModal(false);
-  const handleDelete = () => dispatch(deleteContacts(id));
+  const handleDelete = async () => {
+    const result = await dispatch(deleteContacts(id));
+    if (result.error) {
+      serverError();
+    } else {
+      deleteContactsSuccess(name);
+    }
+  };
 
   return (
     <>
