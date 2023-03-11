@@ -10,7 +10,16 @@ import {
   serverError,
 } from 'components/Toastify/Toastify';
 
-import { BoxStyled, Form, Title, TextFieldStyled, Button, IconBtn } from './RedactModal.styled';
+import {
+  BoxStyled,
+  Form,
+  ButtonClose,
+  IconBtnClose,
+  Title,
+  TextFieldStyled,
+  ButtonSubmit,
+  IconBtn,
+} from './RedactModal.styled';
 import { Modal } from '@mui/material';
 
 export const RedactModal = ({ isOpenModal, handleCloseModal, id, name, number }) => {
@@ -48,12 +57,14 @@ export const RedactModal = ({ isOpenModal, handleCloseModal, id, name, number })
   return (
     <Modal
       open={isOpenModal}
-      onClose={handleCloseModal}
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
       <BoxStyled>
         <Form onSubmit={handleSubmit}>
+          <ButtonClose type="button" onClick={handleCloseModal}>
+            <IconBtnClose />
+          </ButtonClose>
           <Title>Redact your contact</Title>
 
           <TextFieldStyled
@@ -74,10 +85,10 @@ export const RedactModal = ({ isOpenModal, handleCloseModal, id, name, number })
             fullWidth
           />
 
-          <Button type="submit">
+          <ButtonSubmit type="submit">
             Redact
             <IconBtn />
-          </Button>
+          </ButtonSubmit>
         </Form>
       </BoxStyled>
     </Modal>

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Box, TextField } from '@mui/material';
 import { BsFillPencilFill } from 'react-icons/bs';
+import { SlClose } from 'react-icons/sl';
 
 export const BoxStyled = styled(Box)`
   position: absolute;
@@ -28,6 +29,31 @@ export const Form = styled.form`
   align-items: center;
 `;
 
+export const ButtonClose = styled.button`
+  position: absolute;
+  top: 5px;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  color: rgba(0, 35, 89, 0.77);
+
+  transition: all 250ms linear;
+
+  &:hover,
+  &:focus {
+    color: #b71111;
+  }
+`;
+
+export const IconBtnClose = styled(SlClose)`
+  width: 35px;
+  height: 35px;
+`;
+
 export const Title = styled.h2`
   color: rgb(0 35 89 / 77%);
 `;
@@ -38,7 +64,7 @@ export const TextFieldStyled = styled(TextField)`
   background-color: #ebf4f8;
   color: #002359c4;
 
-  transition: border 250ms linear;
+  transition: all 250ms linear;
 
   &:hover,
   &:focus {
@@ -47,7 +73,7 @@ export const TextFieldStyled = styled(TextField)`
   }
 `;
 
-export const Button = styled.button`
+export const ButtonSubmit = styled.button`
   width: 100%;
   padding: 10px;
   text-align: center;
